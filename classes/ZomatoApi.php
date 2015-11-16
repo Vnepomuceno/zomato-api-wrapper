@@ -2,7 +2,7 @@
 /**
  * ZomatoApi Class
  *
- * @author Valter Nepomuceno <valter.nep€gmail.com>
+ * @author Valter Nepomuceno <valter.nep@gmail.com>
  * @since 15th November 2015
  * @version 1
  **/
@@ -12,10 +12,15 @@ class ZomatoApi {
     private $baseUrl = 'https://developers.zomato.com/api/v2.1';
     
     /**
+     * GET /cities
      * @return Json response from querying cities with name 'Lisbon'
      */
-    public function dummyGetRequest() {
-        $requestUrl = $this->baseUrl . '/cities?q=Lisbon';
+    public function getCitiesRequest($q) {
+        $requestUrl = $this->baseUrl . '/cities?q=' . $q;
+        return $this->getCurlRequest($requestUrl);
+    }
+    
+    private function getCurlRequest($requestUrl) {
         $header = array('user_key: ' . $this->apikey);
         
         $curl = curl_init($requestUrl);
