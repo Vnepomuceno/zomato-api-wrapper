@@ -10,7 +10,7 @@
 require './../classes/ZomatoApi.php';
  
 $zomatoApi = new ZomatoApi;
-$jsonResponse = $zomatoApi->getCitiesRequest('Lisbon');
+$jsonResponse = $zomatoApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
 print($jsonResponse);
 
 ?>
