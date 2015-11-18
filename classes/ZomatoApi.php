@@ -9,16 +9,23 @@
  
 class ZomatoApi {
     
+    private $dataFormat;
     private $apikey = '9be10252e955cd33f9a9ec30c9eb1e57';
     private $baseUrl = 'https://developers.zomato.com/api/v2.1';
+    
+    function __construct($dataFormat) {
+        $this->dataFormat = $dataFormat;
+    }
     
     /**
      * Sends HTTP GET Request to the request URL using CURL
      * @param string $requestUrl Request URL to execute CURL
+     * @param string $dataFormat Accepts 'XML' or 'JSON'
      * @return JSON response from querying request URL
      */
     private function getCurlRequest($requestUrl) {
-        $header = array('user_key: ' . $this->apikey);
+        $header = array('Accept: application/' . $this->dataFormat,
+                        'user_key: ' . $this->apikey);
         
         $curl = curl_init($requestUrl);
         curl_setopt($curl, CURLOPT_URL, $requestUrl);
@@ -33,6 +40,7 @@ class ZomatoApi {
         
         return $response;
     }
+    
     
     /********************
      *      COMMON      *

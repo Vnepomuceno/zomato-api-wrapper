@@ -8,11 +8,19 @@ Wrapper for the Zomato API, written in PHP and retrieving JSON responses.
 
 ## Usage
 
+Include the needed wrapper class.
+
 ```php
 require './classes/ZomatoApi.php';
+```
 
-// Get an instance of the ZomatoApi class
-$zomatoApi = new ZomatoApi;
-// Invoke the desired method of the Zomato API and get the JSON response
-$jsonResponse = $zomatoApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
+Instantiate wrapper choosing XML or JSON data formats. 
+```php
+$zomatoXmlApi = new ZomatoApi('xml');
+$zomatoJsonApi= new ZomatoApi('json');
+```
+
+Invoke the desired method of the Zomato API and get the HTTP response.
+```php
+$jsonResponse = $zomatoJsonApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
 ```

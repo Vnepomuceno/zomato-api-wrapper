@@ -8,9 +8,14 @@
  **/
 
 require './../classes/ZomatoApi.php';
- 
-$zomatoApi = new ZomatoApi;
-$jsonResponse = $zomatoApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
+
+$zomatoJsonApi = new ZomatoApi('json');
+$jsonResponse = $zomatoJsonApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
+
+$zomatoXmlApi = new ZomatoApi('xml');
+$xmlResponse = $zomatoXmlApi->getCitiesRequest('Lisbon', 0.0, 0.0, '', 0);
+
 print($jsonResponse);
+print($xmlResponse);
 
 ?>
